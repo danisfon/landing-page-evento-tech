@@ -1,0 +1,16 @@
+:root {
+    --bg-color-body: #161616;
+    --bg-color-container: #292828;
+    --font-color: #ffffff;
+    --box: #0f0f0f;
+    --card: #383838;
+}
+
+
+[data-theme="light"] {
+    --bg-color-body: #dad9d9;
+    --bg-color-container: #f0eded;
+    --font-color: #111;
+    --box: #ffffff;
+    --card: #ffffff;
+}
