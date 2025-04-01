@@ -14,19 +14,31 @@
 document.addEventListener("DOMContentLoaded", (event) => {
     buscarInscritos();
     construirModal();
+
+    const temaLocal = localStorage.getItem("tema");
+    document.body.setAttribute("data-theme", temaLocal);    
+
+
 });
 
 
 function construirModal() {
     const botaoSaibaMais = document.getElementById("saiba-mais");
     const modal = document.getElementById("modal");
+    const fechar = document.getElementById("fechar-modal");
+
     botaoSaibaMais.addEventListener("click", () => {
         modal.classList.remove("hidden");
     });
+    
+    fechar.addEventListener("click", () => {
+        modal.classList.add("hidden");
+    });
 
     window.addEventListener("click", (e) => {
-        console.log(e)
-        modal.classList.add("hidden");
+        if (e.target == modal){
+            modal.classList.add("hidden");
+        }
     });
 }
 
@@ -35,12 +47,8 @@ function alterarTema() {
     //DOM -> document object model
     const tema = document.body.getAttribute("data-theme");
     const novoTema = tema == 'dark' ? 'light' : 'dark';
-    /* let novoTema = '';
-     if(tema == 'dark'){
-         novoTema = 'light';
-     }else{
-         novoTema = 'dark';
-     }*/
+
+    localStorage.setItem("tema", novoTema);
     document.body.setAttribute("data-theme", novoTema);
 
     const btAlterarTema = document.getElementById("btAlterarTema");
