@@ -1,16 +1,3 @@
-// function alterarTema() {
-
-//     const tema = document.body.getAttribute("data-theme");
-//     const novoTema = tema == 'dark' ? 'light' : 'dark';
-//     document.body.setAttribute("data-theme", novoTema);
-
-//     const btAlterarTema = document.getElementById("btAlterarTema");
-//     btAlterarTema.textContent = "Dark";
-
-// }
-
-
-
 document.addEventListener("DOMContentLoaded", (event) => {
     buscarInscritos();
     construirModal();
@@ -20,6 +7,27 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 
 });
+
+let idiomaAtual = "pt";
+
+function carregarIdioma(idioma) {
+    fetch('json/${idioma}.json')
+    .then(data => data.json())
+    .then(data => {
+        traduzirPagina(data);
+    });
+}
+
+function traduzirPagina(linguagem) {
+    document.querySelectorAll("data-i18n").forEach(elemento => {
+        console.log(elemento)
+    })
+}
+
+function alterarIdioma() {
+    idiomaAtual = idiomaAtual == "pt" ? "en" : "pt";
+    carregarIdioma(idiomaAtual);
+}
 
 
 function construirModal() {
